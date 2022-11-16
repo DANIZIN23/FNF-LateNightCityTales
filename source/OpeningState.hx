@@ -27,8 +27,7 @@ class OpeningState extends MusicBeatState
         super.create();
         FlxG.sound.music.volume=0;
 
-        opening=new FlxVideo(Paths.video("Opening"));
-        opening.finishCallback=function() 
+        
         {
             FlxG.switchState(new LoadingState(new PlayState(),true,'nightmare'));
         }
@@ -37,7 +36,7 @@ class OpeningState extends MusicBeatState
     {
         if((FlxG.keys.justPressed.ESCAPE||FlxG.keys.justPressed.ENTER))
         {
-            opening.onVLCComplete();
+            
         }
     }
 }
