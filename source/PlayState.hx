@@ -1318,11 +1318,22 @@ class PlayState extends MusicBeatState
 		botplayTxt.borderSize = 1.25;
 		botplayTxt.visible = cpuControlled;
 		add(botplayTxt);
-		if(ClientPrefs.downScroll) {
+		
+		var creditTxt = new FlxText(876, 648, 348);		
+		creditTxt.text = "PORTED BY\nDanizin";		
+		creditTxt.setFormat(Paths.font("vcr.ttf"), 30, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);		
+		creditTxt.scrollFactor.set();		
+		add(creditTxt);		
+				
+			if(ClientPrefs.downScroll) {	
 			botplayTxt.y = timeBarBG.y - 78;
 		}
 
-		strumLineNotes.cameras = [camNoteNormal];
+		if(ClientPrefs.downScroll) {
+				creditTxt.y = 148;
+				
+		}	
+			strumLineNotes.cameras = [camNoteNormal];
 		grpNoteSplashes.cameras = [camNoteNormal];
 		notes.cameras = [camNoteNormal];
 
@@ -1331,13 +1342,20 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
-		botplayTxt.cameras = [camHUD];
+		creditTxt.cameras = [camHUD];
+				
+		botplayTxt.cameras = [camHUD];		
 		timeBar.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
-		// if (SONG.song == 'South')
+		#if android
+		addAndroidControls();		
+		androidControls.visible = true;		
+		#end		
+				
+			// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
 		// UI_camera.zoom = 1;
 
